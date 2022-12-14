@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@font-face {
+  font-family: "Azonix Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Azonix Regular"),
+    url("../assets/fonts/Azonix.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Outrun";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Outrun"), url("../assets/fonts/Outrun.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Underground";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Underground"),
+    url("../assets/fonts/08Underground.ttf") format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  color: white;
+}
+
+body {
+  background-color: #0000003d;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
