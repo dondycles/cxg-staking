@@ -10,12 +10,15 @@ import { BigNumber, ethers } from "ethers";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
+import { BsArrowDownSquareFill } from "react-icons/bs";
 
 const nftDropContractAddress = "0x5B29f2640120d65f11d200eBBea9e195dd67E776";
 const tokenContractAddress = "0x06d40f5C48288a01d3cA250a56fDf01cF385C874";
 const stakingContractAddress = "0xD8A40c49cc4CF88108c6fB4808669E08E90A3f5b";
 
 const Stake: NextPage = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   // Wallet Connection Hooks
   const address = useAddress();
   const connectWithMetamask = useMetamask();
@@ -112,44 +115,63 @@ const Stake: NextPage = () => {
   }
 
   return (
-    <div className="  px-[10px] pt-[20px] pb-[200px]">
-      <h1 className="font-extrabold text-center text-2xl">Stake Your NFTs</h1>
-
+    <div className="  px-[60px] pt-[20px] ">
       {!address ? (
-        <button className={styles.mainButton} onClick={connectWithMetamask}>
-          Connect Wallet
-        </button>
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-2 bg-[#0000008d] p-10 rounded-xl">
+            <h1 className="font-extrabold text-center text-2xl ">
+              Stake Your NFTs
+            </h1>
+            <button
+              className="bg-cxgRed p-2 rounded-full w-fit h-fit  "
+              onClick={connectWithMetamask}
+            >
+              Connect Wallet
+            </button>
+          </div>
+        </div>
       ) : (
         <>
-          <div className="flex  flex-col gap-2 items-center mx-auto  w-fit my-4">
-            <div className="flex flex-wrap items-center justify-center flex-row gap-4 ">
-              <div className="flex flex-col items-center border-2  border-cxgYellow2 rounded-lg  min-w-[200px] px-2">
-                <h3 className="font-extrabold text-cxgYellow2">
-                  Claimable Rewards
-                </h3>
-                <p className="text-2xl font-extrabold text-cxgYellow2">
-                  {!claimableRewards
-                    ? "Loading..."
-                    : ethers.utils.formatUnits(claimableRewards, 18)}{" "}
-                  {tokenBalance?.symbol}
-                </p>
-              </div>
-              <div className="flex flex-col items-center  border-2  border-cxgRed rounded-lg  min-w-[200px] px-2">
-                <h3 className="font-extrabold text-cxgRed">Current Balance</h3>
-                <p className="text-2xl font-extrabold text-cxgRed">
-                  {tokenBalance?.displayValue} {tokenBalance?.symbol}
-                </p>
-              </div>
+          <div
+            className={`z-10 p-[10px] fixed bottom-0 left-0 right-0 bg-slate-900 w-full flex  md:flex-row flex-col gap-2 items-center justify-center duration-300 transition-all ease-in-out
+            ${openMenu ? "translate-y-[100%]" : " translate-y-0"}
+            `}
+          >
+            <div className="flex flex-col items-center border-2  border-cxgYellow2 rounded-lg  min-w-[300px] px-2">
+              <h3 className="font-extrabold text-cxgYellow2">
+                Claimable Rewards
+              </h3>
+              <p className="text-lg font-extrabold text-cxgYellow2">
+                {!claimableRewards
+                  ? "Loading..."
+                  : ethers.utils.formatUnits(claimableRewards, 18)}{" "}
+                {tokenBalance?.symbol}
+              </p>
             </div>
             <button
-              className={`w-fit mx-auto px-4 py-1 rounded-full bg-cxgRed  text-white font-extrabold  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
+              className={`w-fit px-4 py-1 rounded-full bg-cxgRed  text-white font-extrabold  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
               onClick={() => claimRewards()}
             >
               Claim Rewards
             </button>
+            <div className="flex flex-col items-center  border-2  border-cxgRed rounded-lg  min-w-[300px] px-2">
+              <h3 className="font-extrabold text-cxgRed">Current Balance</h3>
+              <p className="text-lg font-extrabold text-cxgRed">
+                {tokenBalance?.displayValue} {tokenBalance?.symbol}
+              </p>
+            </div>
+
+            <BsArrowDownSquareFill
+              onClick={() => {
+                setOpenMenu(!openMenu);
+              }}
+              className={`absolute -top-10 right-5 text-2xl transition-all duration-300 ease-in-out cursor-pointer
+              ${openMenu ? " rotate-180" : ""}
+              `}
+            />
           </div>
 
-          <div className="">
+          <div className=" min-h-screen">
             <h2 className="text-center font-extrabold text-2xl p-10">
               Your Staked NFTs
             </h2>
@@ -179,7 +201,7 @@ const Stake: NextPage = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className=" min-h-screen">
             <h1 className="text-center font-extrabold text-2xl p-10">
               Your Unstaked NFTs
             </h1>

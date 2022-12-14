@@ -12,9 +12,11 @@ export default function Socmed() {
       fixed
       bottom-0
       left-0
-      h-0
+      h-fit
       md:h-full
       w-full
+      bg-slate-900
+      md:bg-none
       md:w-0
       flex
       flex-row
@@ -23,7 +25,8 @@ export default function Socmed() {
       gap-5
       md:items-start
       md:justify-center
-      md:flex-col z-10"
+      md:flex-col z-10
+      py-1"
     >
       <Link
         className="m-auto"
