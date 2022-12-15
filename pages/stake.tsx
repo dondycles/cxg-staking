@@ -174,7 +174,9 @@ const Stake: NextPage = () => {
               </p>
             </div>
             <button
-              className={`w-fit px-4 py-1 rounded-full bg-cxgRed  text-white font-extrabold  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
+              className={`w-fit px-4 py-1 rounded-full bg-[length:200%] animate-redLineAnim 
+              bg-blue-700
+             bg-gradient-to-r from-transparent via-[#d80b31]  text-white font-extrabold  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99] transition-all duration-300`}
               onClick={() => claimRewards()}
             >
               Claim Rewards
@@ -215,7 +217,9 @@ const Stake: NextPage = () => {
                       {nft.metadata.name}
                     </h3>
                     <button
-                      className={` w-full mx-auto bg-cxgRed rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
+                      className={` w-full mx-auto bg-[length:200%] animate-redLineAnim 
+                       bg-blue-700
+                      bg-gradient-to-r from-transparent via-[#d80b31] rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99] transition-all duration-300`}
                       onClick={() => stakeNft(nft.metadata.id)}
                     >
                       Stake
@@ -245,7 +249,9 @@ const Stake: NextPage = () => {
                       {nft.metadata.name}
                     </h3>
                     <button
-                      className={` w-full mx-auto bg-cxgRed rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
+                      className={` w-full mx-auto bg-[length:200%] animate-redLineAnim 
+                      bg-blue-700
+                     bg-gradient-to-r from-transparent via-[#d80b31] rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99] transition-all duration-300`}
                       onClick={() => withdraw(nft.metadata.id)}
                     >
                       Withdraw

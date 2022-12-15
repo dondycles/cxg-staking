@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center p-[10px]"
     >
       <div className=" flex flex-col items-center justify-center  max-w-[500px] min-h-[400px] bg-[#000000cd] rounded-2xl p-4 transition-all duration-1000 ease-in-out">
-        <div className="h-3 w-full bg-gradient-to-r from-transparent via-[#d80b31] to-transparent mt-0 mb-auto mx-auto rounded-lg bg-[length:200%] animate-redLineAnim "></div>
+        <div className="h-3 w-full  to-transparent mt-0 mb-auto mx-auto rounded-lg bg-[length:200%] animate-redLineAnim bg-gradient-to-r from-transparent via-[#d80b31]"></div>
         <h2 className=" font-extrabold text-[30px] mx-auto w-fit py-4 text-center">
           CXG ACADEMY
         </h2>
