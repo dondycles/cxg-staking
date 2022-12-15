@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { BsArrowDownSquareFill } from "react-icons/bs";
 import { useRouter } from "next/router";
+import { motion as m } from "framer-motion";
 
 const nftDropContractAddress = "0x5B29f2640120d65f11d200eBBea9e195dd67E776";
 const tokenContractAddress = "0x06d40f5C48288a01d3cA250a56fDf01cF385C874";
@@ -122,7 +123,13 @@ const Stake: NextPage = () => {
   const route = useRouter();
 
   return (
-    <div className="  px-[60px] pt-[20px] pb-[200px]">
+    <m.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="  px-[60px] pt-[20px] pb-[200px]"
+    >
       <audio id="audioPlay" src="../aud/ost3.mp3" autoPlay={true}></audio>
       {!address ? (
         <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center">
@@ -250,7 +257,7 @@ const Stake: NextPage = () => {
           </div>
         </>
       )}
-    </div>
+    </m.div>
   );
 };
 

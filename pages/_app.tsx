@@ -4,11 +4,11 @@ import "../styles/globals.css";
 import Head from "next/head";
 import Socmed from "../components/socmeds";
 import Background from "../components/background";
-
+import { AnimatePresence } from "framer-motion";
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Goerli;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <ThirdwebProvider desiredChainId={activeChainId}>
       <Head>
@@ -23,7 +23,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Socmed />
       <Background />
-      <Component {...pageProps} />
+      <AnimatePresence initial={false}>
+        <Component key={router.pathname} {...pageProps} />
+      </AnimatePresence>
     </ThirdwebProvider>
   );
 }
