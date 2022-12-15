@@ -11,6 +11,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { BsArrowDownSquareFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const nftDropContractAddress = "0x5B29f2640120d65f11d200eBBea9e195dd67E776";
 const tokenContractAddress = "0x06d40f5C48288a01d3cA250a56fDf01cF385C874";
@@ -118,8 +119,11 @@ const Stake: NextPage = () => {
     );
   }
 
+  const route = useRouter();
+
   return (
     <div className="  px-[60px] pt-[20px] pb-[200px]">
+      <audio id="audioPlay" src="../aud/ost3.mp3" autoPlay={true}></audio>
       {!address ? (
         <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-2 bg-[#0000008d] p-10 rounded-xl">
@@ -129,6 +133,16 @@ const Stake: NextPage = () => {
             <button
               className="bg-cxgRed p-2 rounded-full w-fit h-fit  "
               onClick={connectWithMetamask}
+              onMouseUp={() => {
+                var audio = document.querySelector("#audioPlay");
+                audio.volume = 0.25;
+                audio.play();
+              }}
+              onTouchEnd={() => {
+                var audio = document.querySelector("#audioPlay");
+                audio.volume = 0.25;
+                audio.play();
+              }}
             >
               Connect Wallet
             </button>

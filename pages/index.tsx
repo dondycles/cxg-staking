@@ -25,7 +25,9 @@ const Home: NextPage = () => {
           </p>
           <br />
           <button
-            onClick={() => router.push(`/stake`)}
+            onClick={() => {
+              router.push(`/stake`);
+            }}
             className={`w-full font-extrabold bg-black rounded-md border-2 border-red-800 p-2 text-center hover:bg-red-800 active:bg-red-700 cursor-pointer 
                     `}
           >
