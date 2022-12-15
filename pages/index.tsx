@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import { motion as m } from "framer-motion";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-
   return (
     <m.div
       initial={{ y: "100%" }}
