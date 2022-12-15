@@ -205,20 +205,23 @@ const Stake: NextPage = () => {
             <div className="flex flex-wrap justify-center items-center gap-4">
               {ownedNfts?.map((nft) => (
                 <div
-                  className="w-[300px]  h-auto rounded-2xl border-4 border-slate-900 overflow-hidden bg-slate-900"
+                  className="w-[300px]  h-auto rounded-2xl p-1  overflow-hidden bg-gradient-to-b from-cxgRed to-[#0000003D]"
                   key={nft.metadata.id.toString()}
                 >
-                  <ThirdwebNftMedia
-                    metadata={nft.metadata}
-                    className={styles.nftMedia}
-                  />
+                  <div className="h-fit w-fit  rounded-t-2xl overflow-hidden">
+                    <ThirdwebNftMedia
+                      metadata={nft.metadata}
+                      className={styles.nftMedia}
+                    />
+                  </div>
+
                   <div className="flex flex-col items-center gap-1 p-3">
                     <h3 className="text-xl font-extrabold">
                       {nft.metadata.name}
                     </h3>
                     <button
                       className={` w-full mx-auto bg-[length:200%] animate-redLineAnim 
-                       bg-blue-700
+                       bg-blue-900
                       bg-gradient-to-r from-transparent via-[#d80b31] rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99] transition-all duration-300`}
                       onClick={() => stakeNft(nft.metadata.id)}
                     >
@@ -237,13 +240,16 @@ const Stake: NextPage = () => {
             <div className="flex flex-wrap justify-center items-center gap-4">
               {stakedNfts?.map((nft) => (
                 <div
-                  className="w-[300px]  h-auto rounded-2xl border-4 border-slate-900 overflow-hidden bg-slate-900"
+                  className="w-[300px]  h-auto rounded-2xl p-1 overflow-hidden  bg-gradient-to-b from-cxgRed to-[#0000003D] "
                   key={nft.metadata.id.toString()}
                 >
-                  <ThirdwebNftMedia
-                    metadata={nft.metadata}
-                    className={styles.nftMedia}
-                  />
+                  <div className="h-fit w-fit  rounded-t-2xl overflow-hidden">
+                    <ThirdwebNftMedia
+                      metadata={nft.metadata}
+                      className={styles.nftMedia}
+                    />
+                  </div>
+
                   <div className="flex flex-col items-center gap-1 p-3">
                     <h3 className="text-xl font-extrabold">
                       {nft.metadata.name}
