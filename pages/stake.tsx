@@ -111,11 +111,15 @@ const Stake: NextPage = () => {
   }
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center p-[10px]">
+        <p className="w-fit m-auto text-2xl font-extrabold">Loading</p>
+      </div>
+    );
   }
 
   return (
-    <div className="  px-[60px] pt-[20px] ">
+    <div className="  px-[60px] pt-[20px] pb-[200px]">
       {!address ? (
         <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-2 bg-[#0000008d] p-10 rounded-xl">
@@ -172,38 +176,8 @@ const Stake: NextPage = () => {
           </div>
 
           <div className=" min-h-screen">
-            <h2 className="text-center font-extrabold text-2xl p-10">
-              Your Staked NFTs
-            </h2>
-            <div className="flex flex-wrap justify-center items-center gap-4">
-              {stakedNfts?.map((nft) => (
-                <div
-                  className="w-[300px]  h-auto rounded-2xl border-4 border-slate-900 overflow-hidden bg-slate-900"
-                  key={nft.metadata.id.toString()}
-                >
-                  <ThirdwebNftMedia
-                    metadata={nft.metadata}
-                    className={styles.nftMedia}
-                  />
-                  <div className="flex flex-col items-center gap-1 p-3">
-                    <h3 className="text-xl font-extrabold">
-                      {nft.metadata.name}
-                    </h3>
-                    <button
-                      className={` w-full mx-auto bg-cxgRed rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
-                      onClick={() => withdraw(nft.metadata.id)}
-                    >
-                      Withdraw
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className=" min-h-screen">
             <h1 className="text-center font-extrabold text-2xl p-10">
-              Your Unstaked NFTs
+              Unenrolled CXGNUS
             </h1>
             <div className="flex flex-wrap justify-center items-center gap-4">
               {ownedNfts?.map((nft) => (
@@ -224,6 +198,36 @@ const Stake: NextPage = () => {
                       onClick={() => stakeNft(nft.metadata.id)}
                     >
                       Stake
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className=" min-h-screen">
+            <h2 className="text-center font-extrabold text-2xl p-10">
+              Enrolled CXGNUS
+            </h2>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              {stakedNfts?.map((nft) => (
+                <div
+                  className="w-[300px]  h-auto rounded-2xl border-4 border-slate-900 overflow-hidden bg-slate-900"
+                  key={nft.metadata.id.toString()}
+                >
+                  <ThirdwebNftMedia
+                    metadata={nft.metadata}
+                    className={styles.nftMedia}
+                  />
+                  <div className="flex flex-col items-center gap-1 p-3">
+                    <h3 className="text-xl font-extrabold">
+                      {nft.metadata.name}
+                    </h3>
+                    <button
+                      className={` w-full mx-auto bg-cxgRed rounded-full  hover:bg-cxgYellow2 a active:drop-shadow-[0px_0px_3px_#ffffff99]`}
+                      onClick={() => withdraw(nft.metadata.id)}
+                    >
+                      Withdraw
                     </button>
                   </div>
                 </div>
